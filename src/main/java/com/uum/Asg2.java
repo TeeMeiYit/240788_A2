@@ -6,17 +6,17 @@
 //Name: #Tee Mei Yit
 package com.uum;
 
-import static com.uum.cloc.actualLOC;
-import static com.uum.cloc.blank;
-import static com.uum.cloc.cloc;
-import static com.uum.cloc.comment;
-import static com.uum.commentInfo.commentInfo;
-import static com.uum.keywords.keywords;
+import static com.uum.Cloc.actualLOC;
+import static com.uum.Cloc.blank;
+import static com.uum.Cloc.cloc;
+import static com.uum.Cloc.comment;
+import static com.uum.CommentInfo.commentInfo;
+import static com.uum.Keywords.keywords;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-public class asg2 {
+public class Asg2 {
 
     // public static final String directory = "C:\\Users\\Mei Yit\\Documents\\NetBeansProjects\\240788_A2\\test\\MyThread1.java";
     static String filename = "test\\MyThread1.java";
@@ -44,7 +44,7 @@ public class asg2 {
             int actual = actualLOC();
             keywordsCount = keywords();
             int loc[] = {lineNumberCount, blankCount, commentCount, actual};
-            excel ex = new excel();
+            Excel ex = new Excel();
             ex.exportResultInExcel(courseInfo, loc, Keywords, keywordsCount);
         }
     }

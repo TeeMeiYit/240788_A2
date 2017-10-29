@@ -6,30 +6,29 @@
 //Name: #Tee Mei Yit
 package com.uum;
 
-//import static com.uum.asg2.directory;
-import static com.uum.asg2.absoluteFilePath;
-import static com.uum.cloc.actual;
-import static com.uum.keywords.keywordsCount;
+import static com.uum.Asg2.absoluteFilePath;
+import static com.uum.Cloc.actual;
+import static com.uum.Keywords.keywordsCount;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.LineNumberReader;
+import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 import java.util.stream.IntStream;
 
-public class keywords {
+public class Keywords {
 
     static int keywordsCount[] = new int[53];
     static int total = 0;
 
-    public static int[] keywords() throws FileNotFoundException, IOException {
+    static int[] keywords() throws FileNotFoundException, IOException {
 
         String lineRead = null;
 
-        try {
-            FileReader fr = new FileReader(absoluteFilePath);
-            LineNumberReader lr = new LineNumberReader(fr);
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(absoluteFilePath), Charset.defaultCharset()))){
 
-            while ((lineRead = lr.readLine()) != null) {
+            while ((lineRead = br.readLine()) != null) {
                 if (lineRead.contains(" abstract ")) {
                     keywordsCount[0]++;
                 }
@@ -190,12 +189,6 @@ public class keywords {
                     keywordsCount[52]++;
                 }
             }
-            //System.out.println(" = " + keywordsCount);
-            /*for (int i = 0; i < keywordsCount.length; i++) {
-                if (keywordsCount[i] > 0) {
-                    System.out.println(" = " + keywordsCount);
-                }
-            }*/
 
             total = actual + IntStream.of(keywordsCount).sum();
             System.out.println("Total = " + total);

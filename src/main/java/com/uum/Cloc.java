@@ -6,13 +6,14 @@
 //Name: #Tee Mei Yit
 package com.uum;
 
-//import static com.uum.asg2.directory;
-import static com.uum.asg2.absoluteFilePath;
-import java.io.FileReader;
+import static com.uum.Asg2.absoluteFilePath;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.LineNumberReader;
+import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 
-public class cloc {
+public class Cloc {
 
     static String lineRead = null;
     static int lineNumberCount = 0;
@@ -21,13 +22,10 @@ public class cloc {
     static int actual;
 
     public static int cloc() {
-        try {
-            FileReader fr = new FileReader(absoluteFilePath);
-            LineNumberReader lr = new LineNumberReader(fr);
-
-            while (lr.readLine() != null) {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(absoluteFilePath), Charset.defaultCharset()))) {
+            while (br.readLine() != null) {
                 lineNumberCount++;
-            }
+                }
             System.out.println("LOC = " + lineNumberCount);
         } catch (IOException e) {
             e.printStackTrace();
@@ -37,11 +35,8 @@ public class cloc {
     }
 
     public static int blank() {
-        try {
-            FileReader fr = new FileReader(absoluteFilePath);
-            LineNumberReader lr = new LineNumberReader(fr);
-
-            while ((lineRead = lr.readLine()) != null) {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(absoluteFilePath), Charset.defaultCharset()))) {
+            while ((lineRead = br.readLine()) != null) {
                 if (lineRead.trim().isEmpty()) {
                     blankCount++;
                 }
@@ -54,11 +49,8 @@ public class cloc {
     }
 
     public static int comment() {
-        try {
-            FileReader fr = new FileReader(absoluteFilePath);
-            LineNumberReader lr = new LineNumberReader(fr);
-
-            while ((lineRead = lr.readLine()) != null) {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(absoluteFilePath), Charset.defaultCharset()))) {
+            while ((lineRead = br.readLine()) != null) {
                 if (lineRead.contains("//") || lineRead.contains("*") || lineRead.contains("/*") || lineRead.contains("*/")) {
                     commentCount++;
                 }

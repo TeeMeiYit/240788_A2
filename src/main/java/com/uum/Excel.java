@@ -6,7 +6,7 @@
 //Name: #Tee Mei Yit
 package com.uum;
 
-import static com.uum.keywords.total;
+import static com.uum.Keywords.total;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -15,15 +15,14 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class excel {
+public class Excel {
 
     private static final String FILE_NAME = "excel.xlsx";
-    private Object field;
 
     public static void excel() {
 
         XSSFWorkbook workbook = new XSSFWorkbook();
-        XSSFSheet sheet = workbook.createSheet("Results");
+        workbook.createSheet("Results");
 
     }
 

@@ -6,25 +6,23 @@
 //Name: #Tee Mei Yit
 package com.uum;
 
-//import static com.uum.asg2.directory;
-import static com.uum.asg2.absoluteFilePath;
-import java.io.FileReader;
+import static com.uum.Asg2.absoluteFilePath;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.LineNumberReader;
+import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 
-public class commentInfo {
+public class CommentInfo {
 
     static String lineRead = null;
-    static int count = 0;
     static String sem, course, group, task, matrik, name;
     static String[] courseInfo = new String[5];
 
-    public static String[] commentInfo() {
-        try {
-            FileReader fr = new FileReader(absoluteFilePath);
-            LineNumberReader lr = new LineNumberReader(fr);
+    static String[] commentInfo() {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(absoluteFilePath), Charset.defaultCharset()))){
 
-            while ((lineRead = lr.readLine()) != null) {
+            while ((lineRead = br.readLine()) != null) {
                 if (lineRead.contains("//Semester: #")) {
                     sem = lineRead;
                     sem = sem.replace("//Semester: #", "");
