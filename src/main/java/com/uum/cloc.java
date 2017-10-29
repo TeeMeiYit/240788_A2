@@ -6,7 +6,8 @@
 //Name: #Tee Mei Yit
 package com.uum;
 
-import static com.uum.asg2.directory;
+//import static com.uum.asg2.directory;
+import static com.uum.asg2.absoluteFilePath;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.LineNumberReader;
@@ -21,29 +22,31 @@ public class cloc {
 
     public static int cloc() {
         try {
-            FileReader fr = new FileReader(directory);
+            FileReader fr = new FileReader(absoluteFilePath);
             LineNumberReader lr = new LineNumberReader(fr);
 
             while (lr.readLine() != null) {
                 lineNumberCount++;
-            }System.out.println("LOC = " + lineNumberCount);
+            }
+            System.out.println("LOC = " + lineNumberCount);
         } catch (IOException e) {
             e.printStackTrace();
         }
         return lineNumberCount;
-        
+
     }
 
     public static int blank() {
         try {
-            FileReader fr = new FileReader(directory);
+            FileReader fr = new FileReader(absoluteFilePath);
             LineNumberReader lr = new LineNumberReader(fr);
 
             while ((lineRead = lr.readLine()) != null) {
                 if (lineRead.trim().isEmpty()) {
                     blankCount++;
                 }
-            }System.out.println("Blank = " + blankCount);
+            }
+            System.out.println("Blank = " + blankCount);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -52,14 +55,15 @@ public class cloc {
 
     public static int comment() {
         try {
-            FileReader fr = new FileReader(directory);
+            FileReader fr = new FileReader(absoluteFilePath);
             LineNumberReader lr = new LineNumberReader(fr);
 
             while ((lineRead = lr.readLine()) != null) {
                 if (lineRead.contains("//") || lineRead.contains("*") || lineRead.contains("/*") || lineRead.contains("*/")) {
                     commentCount++;
                 }
-            }System.out.println("Comment = " + commentCount);
+            }
+            System.out.println("Comment = " + commentCount);
         } catch (IOException e) {
             e.printStackTrace();
         }

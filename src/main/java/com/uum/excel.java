@@ -24,7 +24,7 @@ public class excel {
 
         XSSFWorkbook workbook = new XSSFWorkbook();
         XSSFSheet sheet = workbook.createSheet("Results");
-        
+
     }
 
     public void exportResultInExcel(String courseInfo[], int loc[], String[] keywords, int[] keyCount) {

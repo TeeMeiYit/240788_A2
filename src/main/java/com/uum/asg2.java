@@ -12,12 +12,16 @@ import static com.uum.cloc.cloc;
 import static com.uum.cloc.comment;
 import static com.uum.commentInfo.commentInfo;
 import static com.uum.keywords.keywords;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class asg2 {
 
-    public static final String directory = "C:\\Users\\Mei Yit\\Documents\\NetBeansProjects\\240788_A2\\test\\MyThread1.java";
+    // public static final String directory = "C:\\Users\\Mei Yit\\Documents\\NetBeansProjects\\240788_A2\\test\\MyThread1.java";
+    static String filename = "test\\MyThread1.java";
+    static String workingDirectory = System.getProperty("user.dir");
+    static String absoluteFilePath = workingDirectory + File.separator + filename;
 
     public static void main(String args[]) throws FileNotFoundException, IOException {
 
@@ -32,7 +36,7 @@ public class asg2 {
 
         String courseInfo[];
 
-        if (directory != null) {
+        if (absoluteFilePath != null) {
             courseInfo = commentInfo();
             int lineNumberCount = cloc();
             int blankCount = blank();
@@ -42,6 +46,6 @@ public class asg2 {
             int loc[] = {lineNumberCount, blankCount, commentCount, actual};
             excel ex = new excel();
             ex.exportResultInExcel(courseInfo, loc, Keywords, keywordsCount);
-        } 
+        }
     }
 }

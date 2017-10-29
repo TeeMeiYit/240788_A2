@@ -6,7 +6,8 @@
 //Name: #Tee Mei Yit
 package com.uum;
 
-import static com.uum.asg2.directory;
+//import static com.uum.asg2.directory;
+import static com.uum.asg2.absoluteFilePath;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.LineNumberReader;
@@ -20,7 +21,7 @@ public class commentInfo {
 
     public static String[] commentInfo() {
         try {
-            FileReader fr = new FileReader(directory);
+            FileReader fr = new FileReader(absoluteFilePath);
             LineNumberReader lr = new LineNumberReader(fr);
 
             while ((lineRead = lr.readLine()) != null) {

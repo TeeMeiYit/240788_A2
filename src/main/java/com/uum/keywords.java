@@ -6,7 +6,8 @@
 //Name: #Tee Mei Yit
 package com.uum;
 
-import static com.uum.asg2.directory;
+//import static com.uum.asg2.directory;
+import static com.uum.asg2.absoluteFilePath;
 import static com.uum.cloc.actual;
 import static com.uum.keywords.keywordsCount;
 import java.io.FileNotFoundException;
@@ -25,7 +26,7 @@ public class keywords {
         String lineRead = null;
 
         try {
-            FileReader fr = new FileReader(directory);
+            FileReader fr = new FileReader(absoluteFilePath);
             LineNumberReader lr = new LineNumberReader(fr);
 
             while ((lineRead = lr.readLine()) != null) {
@@ -195,7 +196,7 @@ public class keywords {
                     System.out.println(" = " + keywordsCount);
                 }
             }*/
-            
+
             total = actual + IntStream.of(keywordsCount).sum();
             System.out.println("Total = " + total);
         } catch (IOException e) {
